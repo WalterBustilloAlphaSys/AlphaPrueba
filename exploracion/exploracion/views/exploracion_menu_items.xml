@@ -20,16 +20,16 @@
         <menuitem name="Exploración Espacial" id="flota_espacial_base_menu"
                   sequence="1" 
                   web_icon="exploracion,static/description/icon.png"/>
-        <menuitem name="Flota" id="flota_espacial_sub_menu" 
+        <menuitem name="Flota1" id="flota_espacial_sub_menu" 
                   parent="flota_espacial_base_menu" sequence="2"/>
+        <menuitem name="Prueba" id="Prueba_sub_menu" 
+                  parent="flota_espacial_base_menu" sequence="3"/>
         <menuitem name="Naves" id="flota_espacial_menu" 
-                  parent="flota_espacial_sub_menu" sequence="3" 
+                  parent="flota_espacial_sub_menu" sequence="4" 
                   action="exploracion_action"/>
         <menuitem name="Misiones" id="mision_espacial_menu"
-                  parent="flota_espacial_sub_menu" sequence="4"
+                  parent="flota_espacial_sub_menu" sequence="5"
                   action="mision_action"/>
       
-        <menuitem name="Prueba" id="Prueba_sub_menu" 
-                  parent="flota_espacial_base_menu" sequence="2"/>
   </data>
 </odoo>
