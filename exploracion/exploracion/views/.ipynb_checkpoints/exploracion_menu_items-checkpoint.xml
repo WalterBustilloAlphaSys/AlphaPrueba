@@ -13,6 +13,13 @@
             <field name="name">Gestion de misiones espaciales</field>
             <field name="res_model">exploracion.mision</field>
             <field name="view_mode">tree,form</field>
+      </record>
+            
+        <record id='mision_action1' model='ir.actions.act_window'>
+            <field name="name">Gestion de misiones espaciales Prueba</field>
+            <field name="res_model">exploracion.mision</field>
+            <field name="view_mode">tree,form</field>
+            
         </record>
         
         <!-- Menu items to make the module visible to users -->
@@ -20,16 +27,22 @@
         <menuitem name="Exploración Espacial" id="flota_espacial_base_menu"
                   sequence="1" 
                   web_icon="exploracion,static/description/icon.png"/>
-        <menuitem name="Flota" id="flota_espacial_sub_menu" 
+        <menuitem name="Flota1" id="flota_espacial_sub_menu" 
                   parent="flota_espacial_base_menu" sequence="2"/>
-        <menuitem name="Prueba" id="Prueba_sub_menu" 
-                  parent="flota_espacial_base_menu" sequence="3"/>
+
         <menuitem name="Naves" id="flota_espacial_menu" 
-                  parent="flota_espacial_sub_menu" sequence="4" 
+                  parent="flota_espacial_sub_menu" sequence="3" 
                   action="exploracion_action"/>
         <menuitem name="Misiones" id="mision_espacial_menu"
-                  parent="flota_espacial_sub_menu" sequence="5"
+                  parent="flota_espacial_sub_menu" sequence="4"
                   action="mision_action"/>
+      
+        <menuitem name="Prueba" id="Prueba_sub_menu" 
+                  parent="flota_espacial_base_menu" sequence="5"/>
+      
+        <menuitem name="Prueba1" id="Prueba_menu"
+                  parent="Prueba_sub_menu" sequence="6"
+                  action="mision_action1"/>      
       
   </data>
 </odoo>
