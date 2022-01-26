@@ -28,5 +28,6 @@
         <menuitem name="Misiones" id="mision_espacial_menu"
                   parent="flota_espacial_sub_menu" sequence="4"
                   action="mision_action"/>
+                
   </data>
 </odoo>
