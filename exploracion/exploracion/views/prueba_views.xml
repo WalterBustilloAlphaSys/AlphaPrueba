@@ -23,6 +23,7 @@
                                 <field name="length"/>
                                 <field name="width"/>
                                 <field name="heigth"/>
+                                <field name="m2"/>
                             </group>
                         </group>
                     </sheet>
