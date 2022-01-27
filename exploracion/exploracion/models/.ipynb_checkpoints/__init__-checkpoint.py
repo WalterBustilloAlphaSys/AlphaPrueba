@@ -5,4 +5,3 @@ from . import mision
 from . import res_partner
 from . import purchase
 from . import product_template
-from . import prueba

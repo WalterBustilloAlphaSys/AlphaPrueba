@@ -30,6 +30,7 @@
         'views/exploracion_menu_items.xml',
         'views/naves_views.xml',
         'views/mision_views.xml',
+        'views/prueba_views.xml',
         'views/res_partners_views_inherit.xml',
         'views/product_views_inherit.xml',
         'views/purchase_views_inherit.xml',
