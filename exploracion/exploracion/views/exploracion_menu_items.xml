@@ -16,7 +16,7 @@
       </record>
             
         <record id='mision_action1' model='ir.actions.act_window'>
-            <field name="name">Gestion de misiones espaciales Prueba</field>
+            <field name="name">Prueba</field>
             <field name="res_model">exploracion.prueba</field>
             <field name="view_mode">tree,form</field>
             

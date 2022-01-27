@@ -20,21 +20,11 @@
                                 <field name="fecha_retorno"/>
                             </group>
                             <group>
-                                <field name="captain_id"
-                                       domain="[('is_company','=',False),('is_nave_crew','=',True),('crew_category','=','capitan')]"/>
-                                <field name="active"/>
+                                <field name="length"/>
+                                <field name="width"/>
+                                <field name="heigth"/>
                             </group>
                         </group>
-
-                        <notebook>
-                            <page string="Description">
-                                <field name="description"/>
-                            </page>
-                            <page string="Tripulacion">
-                                <field name="crew_ids" 
-                                       domain="[('is_company','=',False),('is_nave_crew','=',True)]"/>
-                            </page>
-                        </notebook>
                     </sheet>
                 </form>
             </field>
