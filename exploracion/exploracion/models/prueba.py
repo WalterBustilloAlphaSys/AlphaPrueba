@@ -50,7 +50,8 @@ class Prueba(models.Model):
         for record in self:
             if record.length>0 and record.width>0 and record.heigth>0:
                 #record.m2 = record.length*record.width*record.heigth
-                record.me = record.nave_id.length
+                for nave in record.nave_id:
+                    record.m2 = nave.length
             else:
                 record.m2 = 0
             
