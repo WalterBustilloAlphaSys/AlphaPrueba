@@ -41,7 +41,9 @@ class Prueba(models.Model):
     length = fields.Float(string='Length', compute='_length')
     width  = fields.Float(string='Width', compute='_width')
     heigth  = fields.Float(string='Heigth', compute='_heigth')
-    m2 = fields.Float(string='m2', compute='_total_m2')
+    
+    m3 = fields.Float(string='m2', compute='_total_m2')
+    Peso = fields.Float(string='Peso (T)', compute='_peso')
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
@@ -50,10 +52,19 @@ class Prueba(models.Model):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
-                    record.m2 = nave.length*nave.width*nave.heigth
+                    record.m3 = nave.length*nave.width*nave.heigth
             else:
                 record.m2 = 0
-
+                
+    @api.depends('nave_id')
+    def _peso(self):
+        for record in self:
+            if record.nave_id:
+                for nave in record.nave_id:
+                    record.m2 = (nave.length*nave.width*nave.heigth)*0.17
+            else:
+                record.m2 = 0
+                
     @api.depends('nave_id')
     def _length(self):
         for record in self:

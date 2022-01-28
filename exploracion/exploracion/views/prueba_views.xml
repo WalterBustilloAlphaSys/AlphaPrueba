@@ -23,8 +23,13 @@
                                 <field name="length"/>
                                 <field name="width"/>
                                 <field name="heigth"/>
-                                <field name="m2"/>
                             </group>
+                            <group>
+                                <field name="m3"/>
+                                <field name="Peso"/>
+                                <field name="active"/>
+                            </group>
+                            
                         </group>
                     </sheet>
                 </form>
