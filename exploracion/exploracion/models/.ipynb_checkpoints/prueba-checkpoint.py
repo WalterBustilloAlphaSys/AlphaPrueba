@@ -42,13 +42,13 @@ class Prueba(models.Model):
     width  = fields.Float(string='Width', compute='_width')
     heigth  = fields.Float(string='Heigth', compute='_heigth')
     
-    m3 = fields.Float(string='m2', compute='_total_m2')
+    m3 = fields.Float(string='Metros cubicos', compute='_total_m3')
     Peso = fields.Float(string='Peso (T)', compute='_peso')
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
     @api.depends('nave_id')
-    def _total_m2(self):
+    def _total_m3(self):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
