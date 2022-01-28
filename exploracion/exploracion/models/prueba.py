@@ -55,7 +55,7 @@ class Prueba(models.Model):
                 record.m2 = 0
 
     @api.depends('nave_id')
-    def _length_m2(self):
+    def _length(self):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
@@ -64,7 +64,7 @@ class Prueba(models.Model):
                 record.length = 0
                 
     @api.depends('nave_id')
-    def _total(self):
+    def _width(self):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
@@ -73,7 +73,7 @@ class Prueba(models.Model):
                 record.width = 0
                 
     @api.depends('nave_id')
-    def _total_m2(self):
+    def _heigth(self):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
