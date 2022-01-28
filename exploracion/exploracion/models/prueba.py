@@ -49,7 +49,8 @@ class Prueba(models.Model):
     def _total_m2(self):
         for record in self:
             if record.length>0 and record.width>0 and record.heigth>0:
-                record.m2 = record.length*record.width*record.heigth
+                #record.m2 = record.length*record.width*record.heigth
+                record.me = record.nave_id.length
             else:
                 record.m2 = 0
             
