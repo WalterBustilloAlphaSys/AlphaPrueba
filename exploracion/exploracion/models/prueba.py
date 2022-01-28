@@ -41,7 +41,7 @@ class Prueba(models.Model):
     length = fields.Float(string='Length', required=True)
     width  = fields.Float(string='Width', required=True)
     heigth  = fields.Float(string='Heigth', required=True)
-    m2 = fields.Float(string='m2', Compute=True)
+    m2 = fields.Float(string='m2', compute=True)
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
