@@ -38,24 +38,39 @@ class Prueba(models.Model):
     
     fligth_price = fields.Float(string = "Precio vuelo comercial")
 
-    length = fields.Float(string='Length', required=True)
-    width  = fields.Float(string='Width', required=True)
-    heigth  = fields.Float(string='Heigth', required=True)
+    length = fields.Float(string='Length', compute='_length')
+    width  = fields.Float(string='Width', compute='_width')
+    heigth  = fields.Float(string='Heigth', compute='_heigth')
     m2 = fields.Float(string='m2', compute='_total_m2')
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
-    @api.depends('length','width','heigth')
+    @api.depends('nave_id')
     def _total_m2(self):
         for record in self:
-            if record.length>0 and record.width>0 and record.heigth>0:
-                #record.m2 = record.length*record.width*record.heigth
-                for nave in record.nave_id:
-                    record.m2 = nave.length
+            for nave in record.nave_id:
+                record.m2 = nave.length*nave.width*nave.heigth
             else:
                 record.m2 = 0
-            
-        
+
+    @api.depends('nave_id')
+    def _length_m2(self):
+        for record in self:
+            for nave in record.nave_id:
+                record.length = nave.length
+                
+    @api.depends('nave_id')
+    def _total(self):
+        for record in self:
+            for nave in record.nave_id:
+                record.m2 = nave.length*nave.width*nave.heigth
+                
+    @api.depends('nave_id')
+    def _total_m2(self):
+        for record in self:
+            for nave in record.nave_id:
+                record.m2 = nave.length*nave.width*nave.heigth
+    
 #     @api.depends('value')
 #     def _value_pc(self):
 #         for record in self:
