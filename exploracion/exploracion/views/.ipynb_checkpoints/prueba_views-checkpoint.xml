@@ -2,11 +2,11 @@
 <odoo>
   <data>   
         <!-- Mision Form -->
-        <record model="ir.ui.view" id="mision_view_form">
+        <record model="ir.ui.view" id="prueba_view_form">
             <field name="name">prueba.form</field>
             <field name="model">exploracion.prueba</field>
             <field name="arch" type="xml">
-                <form string="FormularioPrueba">
+                <form string="Formulario Prueba">
                     <sheet>
                         <h1><field name="name"/></h1>
                         <group>
@@ -20,32 +20,31 @@
                                 <field name="fecha_retorno"/>
                             </group>
                             <group>
-                                <field name="captain_id"
-                                       domain="[('is_company','=',False),('is_nave_crew','=',True),('crew_category','=','capitan')]"/>
+                                <field name="length"/>
+                                <field name="width"/>
+                                <field name="heigth"/>
+                            </group>
+                            <group>
+                                <field name="m3"/>
+                                <field name="Peso"/>
+                                <field name="distancia"/>
+                            </group>
+                            <group>
                                 <field name="active"/>
                             </group>
+                            
                         </group>
-
-                        <notebook>
-                            <page string="Description">
-                                <field name="description"/>
-                            </page>
-                            <page string="Tripulacion">
-                                <field name="crew_ids" 
-                                       domain="[('is_company','=',False),('is_nave_crew','=',True)]"/>
-                            </page>
-                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
         
         <!-- Misions List -->
-        <record model="ir.ui.view" id="mision_view_list">
+        <record model="ir.ui.view" id="prueba_view_list">
             <field name="name">prueba.list</field>
             <field name="model">exploracion.prueba</field>
             <field name="arch" type="xml">
-                <tree string="Misiones Espaciales">
+                <tree string="Prueba Misiones Espaciales">
                     <field name="name"/>
                     <field name="nave_id"/>
                     <field name="origen"/>

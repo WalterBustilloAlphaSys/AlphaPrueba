@@ -16,8 +16,7 @@ class Prueba(models.Model):
                              copy=False, default='tierra')
     
     destino = fields.Selection(string='Destino',
-                             selection=[('tierra','Tierra'),
-                                        ('sol','Sol'),
+                             selection=[('sol','Sol'),
                                         ('mercurio','Mercurio'),
                                         ('venus','Venus'),
                                         ('luna','Luna'),
@@ -44,6 +43,7 @@ class Prueba(models.Model):
     
     m3 = fields.Float(string='Metros cubicos', compute='_total_m3')
     Peso = fields.Float(string='Peso (T)', compute='_peso')
+    distancia = fields.Float(string='Distancia de viaje (millones de km)', compute='_distancia')
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
@@ -91,6 +91,34 @@ class Prueba(models.Model):
                     record.heigth = nave.heigth
             else:
                 record.heigth = 0
+                
+    @api.depends('destino')
+    def _distancia(self):
+        for record in self:
+            if record.destino == 'sol':
+                record.distancia = 146.6
+            elif record.destino == 'mercurio':
+                record.distancia = 91
+            elif record.destino == 'venus':
+                record.distancia = 42
+            elif record.destino == 'luna':
+                record.distancia = 0.384
+            elif record.destino == 'marte':
+                record.distancia = 69
+            elif record.destino == 'jupiter':
+                record.distancia = 591
+            elif record.destino == 'saturno':
+                record.distancia = 1200
+            elif record.destino == 'urano':
+                record.distancia = 2543.16
+            elif record.destino == 'neptuno':
+                record.distancia = 4500
+            elif record.destino == 'pluton':
+                record.distancia = 7529
+            else:
+                record.distancia = 0
+                
+
 #     @api.depends('value')
 #     def _value_pc(self):
 #         for record in self:

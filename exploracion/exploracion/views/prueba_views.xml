@@ -27,6 +27,9 @@
                             <group>
                                 <field name="m3"/>
                                 <field name="Peso"/>
+                                <field name="distancia"/>
+                            </group>
+                            <group>
                                 <field name="active"/>
                             </group>
                             
