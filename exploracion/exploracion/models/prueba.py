@@ -54,7 +54,7 @@ class Prueba(models.Model):
                 for nave in record.nave_id:
                     record.m3 = nave.length*nave.width*nave.heigth
             else:
-                record.m2 = 0
+                record.m3 = 0
                 
     @api.depends('nave_id')
     def _peso(self):
@@ -63,7 +63,7 @@ class Prueba(models.Model):
                 for nave in record.nave_id:
                     record.Peso = (nave.length*nave.width*nave.heigth)*0.17
             else:
-                record.m2 = 0
+                record.Peso = 0
                 
     @api.depends('nave_id')
     def _length(self):
