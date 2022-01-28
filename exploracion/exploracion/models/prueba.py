@@ -61,7 +61,7 @@ class Prueba(models.Model):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
-                    record.m2 = (nave.length*nave.width*nave.heigth)*0.17
+                    record.Peso = (nave.length*nave.width*nave.heigth)*0.17
             else:
                 record.m2 = 0
                 
