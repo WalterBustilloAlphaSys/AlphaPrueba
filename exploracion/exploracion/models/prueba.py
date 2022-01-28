@@ -77,7 +77,7 @@ class Prueba(models.Model):
         for record in self:
             if record.nave_id:
                 for nave in record.nave_id:
-                    record.height = nave.heigth
+                    record.heigth = nave.heigth
             else:
                 record.heigth = 0
 #     @api.depends('value')
