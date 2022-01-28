@@ -48,29 +48,38 @@ class Prueba(models.Model):
     @api.depends('nave_id')
     def _total_m2(self):
         for record in self:
-            for nave in record.nave_id:
-                record.m2 = nave.length*nave.width*nave.heigth
+            if record.nave_id:
+                for nave in record.nave_id:
+                    record.m2 = nave.length*nave.width*nave.heigth
             else:
                 record.m2 = 0
 
     @api.depends('nave_id')
     def _length_m2(self):
         for record in self:
-            for nave in record.nave_id:
-                record.length = nave.length
+            if record.nave_id:
+                for nave in record.nave_id:
+                    record.length = nave.length
+            else:
+                record.length = 0
                 
     @api.depends('nave_id')
     def _total(self):
         for record in self:
-            for nave in record.nave_id:
-                record.m2 = nave.length*nave.width*nave.heigth
+            if record.nave_id:
+                for nave in record.nave_id:
+                    record.width = nave.width
+            else:
+                record.width = 0
                 
     @api.depends('nave_id')
     def _total_m2(self):
         for record in self:
-            for nave in record.nave_id:
-                record.m2 = nave.length*nave.width*nave.heigth
-    
+            if record.nave_id:
+                for nave in record.nave_id:
+                    record.height = nave.heigth
+            else:
+                record.heigth = 0
 #     @api.depends('value')
 #     def _value_pc(self):
 #         for record in self:
