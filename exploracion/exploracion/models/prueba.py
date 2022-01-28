@@ -41,15 +41,17 @@ class Prueba(models.Model):
     length = fields.Float(string='Length', required=True)
     width  = fields.Float(string='Width', required=True)
     heigth  = fields.Float(string='Heigth', required=True)
-    m2 = fields.Float(string='m2', compute='_value_m2')
+    m2 = fields.Float(string='m2', compute='_total_m2')
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
     @api.depends('length','width','heigth')
-    def _value_m2(self):
+    def _total_m2(self):
         for record in self:
             if record.length>0 and record.width>0 and record.heigth>0:
-                record.m2 = float(record.length*record.width*record.heigth)
+                record.m2 = record.length*record.width*record.heigth
+            else:
+                record.m2 = 0
             
         
 #     @api.depends('value')

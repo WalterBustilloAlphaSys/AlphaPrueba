@@ -37,40 +37,23 @@ class Prueba(models.Model):
                              required = True)
     
     fligth_price = fields.Float(string = "Precio vuelo comercial")
-    
-    captain_id = fields.Many2one(comodel_name='res.partner', string ='Capitán',
-                                 ondelete='cascade',
-                                 required=True,
-                                 domain="['&',('is_company','=', False), '&',('is_nave_crew','=',True),('crew_category','=','capitan')]"
-                                )
-    
-    crew_ids = fields.Many2many(comodel_name='res.partner', 
-                               string='Tripulantes',
-                               domain="[('is_company','=',False),('is_nave_crew','=',True)]")
-    
-    
-    
-    active = fields.Boolean(string='Active', required=True, default=True)
-    
-    @api.onchange('captain_id')
-    def _add_captain_to_crews(self):
-        for record in self:
-            curr_obj = self.env['exploracion.mision']
-            if self.crew_ids:
-                new_crew = [member.id for member in self.crew_ids if member.crew_category != self.captain_id.crew_category]
-                new_crew.append(self.captain_id.id)
-                #escribimos la nueva lista de tripulantes
-                self.crew_ids = [(6,0,new_crew)] 
-            else:
-                self.crew_ids = self.captain_id
 
-    @api.constrains('crew_ids')
-    def _check_if_a_captain(self):
+    length = fields.Float(string='Length', required=True)
+    width  = fields.Float(string='Width', required=True)
+    heigth  = fields.Float(string='Heigth', required=True)
+    m2 = fields.Float(string='m2', compute='_total_m2')
+
+    active = fields.Boolean(string='Active', required=True, default=True)
+
+    @api.depends('length','width','heigth')
+    def _total_m2(self):
         for record in self:
-            captains = [member for member in self.crew_ids if member.crew_category == 'capitan']
-            if len(captains) == 0:
-                raise ValidationError("Debe haber al menos un capitan en la tripulación")
-    
+            if record.length>0 and record.width>0 and record.heigth>0:
+                record.m2 = record.length*record.width*record.heigth
+            else:
+                record.m2 = 0
+            
+        
 #     @api.depends('value')
 #     def _value_pc(self):
 #         for record in self:
