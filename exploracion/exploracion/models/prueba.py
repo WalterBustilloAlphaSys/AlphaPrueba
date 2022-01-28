@@ -45,11 +45,11 @@ class Prueba(models.Model):
 
     active = fields.Boolean(string='Active', required=True, default=True)
 
-    @api.depends('length','width','height')
+    @api.depends('length','width','heigth')
     def _value_m2(self):
         for record in self:
-            if record.length>0 and record.width>0 and record.height>0:
-                record.m2 = float(record.length*record.width*record.height)
+            if record.length>0 and record.width>0 and record.heigth>0:
+                record.m2 = float(record.length*record.width*record.heigth)
             
         
 #     @api.depends('value')
