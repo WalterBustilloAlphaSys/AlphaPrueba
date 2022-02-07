@@ -42,3 +42,22 @@ class LibraryBook(models.Model):
 
     def make_lost(self):
         self.change_state('lost')
+    
+    def log_all_library_members(self):
+        #empty recordset of model library member
+        library_member_model = self.env['library.member']
+        all_members = library_member_model.search([])
+        print("ALL MEMBERS: ",all_members)
+        return True
+
+class LibraryMember(models.Model):
+
+    _name = 'library.member'
+    _inherits = {'res.partner': 'partner_id'}
+    _description = "Library member"
+
+    partner_id = fields.Many2one('res.partner', ondelete='cascade')
+    date_start = fields.Date('Member Since')
+    date_end = fields.Date('Termination Date')
+    member_number = fields.Char()
+    date_of_birth = fields.Date('Date of birth')
