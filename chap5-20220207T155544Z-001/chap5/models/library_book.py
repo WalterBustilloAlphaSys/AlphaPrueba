@@ -63,7 +63,7 @@ class LibraryBook(models.Model):
         
         parent_category_val = {
             'name':'Parent category',
-            'email':'Description for parent category',
+            'description':'Description for parent category',
             'child_ids':[
                 (0,0,categ1),
                 (0,0,categ2),
