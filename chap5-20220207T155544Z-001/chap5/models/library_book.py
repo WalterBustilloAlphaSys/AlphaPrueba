@@ -49,6 +49,28 @@ class LibraryBook(models.Model):
         all_members = library_member_model.search([])
         print("ALL MEMBERS: ",all_members)
         return True
+    
+    def create_categories(self):
+        categ1 = {
+            'name':'Child category 1',
+            'description': 'Description for child 1'
+        }
+        
+        categ2 = {
+            'name':'Child category 2',
+            'description': 'Description for child 2'
+        }
+        
+        parent_category_val = {
+            'name':'Parent category',
+            'email':'Description for parent category',
+            'child_ids':[
+                (0,0,categ1),
+                (0,0,categ2),
+            ]
+        }
+        
+        record = self.env['library.book.category'].create(parent_category_val)
 
 class LibraryMember(models.Model):
 
