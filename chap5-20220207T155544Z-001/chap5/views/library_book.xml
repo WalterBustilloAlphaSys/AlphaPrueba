@@ -22,6 +22,8 @@
                     <button name="make_lost"  string="Make Lost" type="object"/>
                     <button name="log_all_library_members" string="Log Members" type="objetc"/> 
                     <button name="create_categories" string="Create Categories" type="object"/>
+                    <button name="change_release_date" string="Update Date" type="object"/>
+                    <button name="find_book" string="Find Book" type="objetc"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <group>

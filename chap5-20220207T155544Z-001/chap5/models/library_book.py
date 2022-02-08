@@ -72,6 +72,10 @@ class LibraryBook(models.Model):
         
         record = self.env['library.book.category'].create(parent_category_val)
         
+        def change_release_date(self):
+            self.ensure_one()
+            self.date_release = fields.Date.today()
+        
         def find_book(self):
             domain = [
                 '|',
