@@ -72,21 +72,21 @@ class LibraryBook(models.Model):
         
         record = self.env['library.book.category'].create(parent_category_val)
         
-        def change_release_date(self):
-            self.ensure_one()
-            self.date_release = fields.Date.today()
+    def change_release_date(self):
+        self.ensure_one()
+        self.date_release = fields.Date.today()
         
-        def find_book(self):
-            domain = [
-                '|',
-                '&', ('name','ilike','Book Name'),
-                ('category_id.name','ilike','Category Name'),
-                '&', ('name','ilike','Book Name 2'),
-                ('category_id.name','ilike','Category Name 2')
-            ]
-            books = self.search(domain)
-            logger.info('Books found: %s',books)
-            return True
+    def find_book(self):
+        domain = [
+            '|',
+            '&', ('name','ilike','Book Name'),
+            ('category_id.name','ilike','Category Name'),
+            '&', ('name','ilike','Book Name 2'),
+            ('category_id.name','ilike','Category Name 2')]
+        
+        books = self.search(domain)
+        logger.info('Books found: %s',books)
+        return True
 
 class LibraryMember(models.Model):
 
