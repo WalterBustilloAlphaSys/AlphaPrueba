@@ -85,8 +85,6 @@ class LibraryBook(models.Model):
             ('category_id.name','ilike','Category Name 2')]
         
         books = self.search(domain)
-        logger.info('Books found: %s',books)
-        return True
 
 class LibraryMember(models.Model):
 
