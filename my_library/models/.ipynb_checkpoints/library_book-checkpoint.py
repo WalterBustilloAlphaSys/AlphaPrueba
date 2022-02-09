@@ -102,7 +102,7 @@ class LibraryBook(models.Model):
     
     def books_with_multiple_authors(self, all_books):
         def predicate(book):
-            if len(book.authors_ids)>1:
+            if len(book.author_ids)>1:
                 return True
         return all_books.filtered(predicate)
 
