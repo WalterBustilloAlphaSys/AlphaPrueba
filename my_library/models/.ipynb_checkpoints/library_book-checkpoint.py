@@ -5,7 +5,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 class LibraryBook(models.Model):
@@ -92,13 +92,13 @@ class LibraryBook(models.Model):
                      ('category_id.name', '=', 'Category Name 2')
         ]
         books = self.search(domain)
-        logger.info('Books found: %s', books)
+        _logger.info('Books found: %s', books)
         return True
     
     def filter_books(self):
         all_books = self.search([])
         filtered_books = self.books_with_multiple_authors(all_books)
-        logger.info('Filtered Books: %s', filtered_books)
+        _logger.info('Filtered Books: %s', filtered_books)
     
     def books_with_multiple_authors(self, all_books):
         def predicate(book):
@@ -109,11 +109,21 @@ class LibraryBook(models.Model):
     def mapped_books(self):
         all_books = self.search([])
         books_authors = self.get_author_names(all_books)
-        logger.info('Books Authors: %s', books_authors)
+        _logger.info('Books Authors: %s', books_authors)
 
     @api.model
     def get_author_names(self, all_books):
         return all_books.mapped('author_ids.name')
+    
+    def sort_books(self):
+        all_books = self.search([])
+        books_sorted = self.sort_books_by_date(all_books)
+        logger.info('Books before sorting: %s', all_books)
+        logger.info('Books after sorting: %s', books_sorted)
+
+    @api.model
+    def sort_books_by_date(self, all_books):
+        return all_books.sorted(key='date_release')
 
 class LibraryMember(models.Model):
 
