@@ -104,7 +104,7 @@ class LibraryBook(models.Model):
         def predicate(book):
             if len(book.author_ids)>1:
                 return True
-        return all_books.filter(predicate)
+        return all_books.filtered(predicate)
 
 class LibraryMember(models.Model):
 
