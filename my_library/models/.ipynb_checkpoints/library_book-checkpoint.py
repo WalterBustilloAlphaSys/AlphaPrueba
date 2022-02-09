@@ -5,7 +5,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 class LibraryBook(models.Model):
@@ -105,6 +105,15 @@ class LibraryBook(models.Model):
             if len(book.author_ids)>1:
                 return True
         return all_books.filtered(predicate)
+    
+    def mapped_books(self):
+        all_books = self.search([])
+        books_authors = self.get_author_names(all_books)
+        logger.info('Books Authors: %s', books_authors)
+
+    @api.model
+    def get_author_names(self, all_books):
+        return all_books.mapped('author_ids.name')
 
 class LibraryMember(models.Model):
 
