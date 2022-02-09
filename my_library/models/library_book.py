@@ -100,7 +100,7 @@ class LibraryBook(models.Model):
         filtered_books = self.books_with_multiple_authors(all_books)
         logger.info('Filtered Books: %s', filtered_books)
     
-    def bokks_with_multiple_authors(self, all_books):
+    def books_with_multiple_authors(self, all_books):
         def predicate(book):
             if len(book.authors_ids)>1:
                 return True
