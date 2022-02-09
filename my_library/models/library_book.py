@@ -94,6 +94,17 @@ class LibraryBook(models.Model):
         books = self.search(domain)
         logger.info('Books found: %s', books)
         return True
+    
+    def filter_books(self):
+        all_books = self.search([])
+        filtered_books = self.books_with_multiple_authors(all_books)
+        logger.info('Filtered Books: %s', filtered_books)
+    
+    def bokks_with_multiple_authors(self, all_books):
+        def predicate(book):
+            if len(book.authors_ids)>1:
+                return True
+        return all_books.filtered(predicate)
 
 class LibraryMember(models.Model):
 
