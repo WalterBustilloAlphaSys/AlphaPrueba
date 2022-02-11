@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, _
 from odoo.exceptions import UserError
+from odoo.tests.common import Form
+
 
 import logging
 
@@ -62,3 +64,11 @@ class LibraryBook(models.Model):
         self.env.cr.execute(sql_query)
         result = self.env.cr.fetchall()
         _logger.info("Average book occupation: %s", result)
+
+    def return_all_books(self):
+        self.ensure_one()
+        wizard = self.env['library.return.wizard']
+        with Form(wizard) as return_form:
+            return_form.borrower_id = self.env.user.partner_id
+            record = return_form.save()
+            record.books_returns()
