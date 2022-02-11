@@ -30,6 +30,8 @@ class LibraryBook(models.Model):
     def make_lost(self):
         self.ensure_one()
         self.state = 'lost'
+        if not self.env.context.get('avoid_deactivate'):
+            self.active = False
 
     def book_rent(self):
         self.ensure_one()
