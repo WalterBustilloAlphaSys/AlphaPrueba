@@ -20,6 +20,8 @@ Description related to library.
         'views/library_book_rent.xml',
         'wizard/library_book_rent_wizard.xml',
         'wizard/library_book_return_wizard.xml',
+        'views/library_book_statistics.xml',
+        'views/res_config_settings_views.xml'
     ],
     # This demo data files will be loaded if db initialize with demo data (commented because file is not used in this example)
     # 'demo': [
