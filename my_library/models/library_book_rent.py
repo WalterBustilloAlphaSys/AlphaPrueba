@@ -4,7 +4,6 @@ from odoo import models, fields, api
 
 class LibraryBookRent(models.Model):
     _name = 'library.book.rent'
-    _description = 'Library Book Rent'
 
     book_id = fields.Many2one('library.book', 'Book', required=True)
     borrower_id = fields.Many2one('res.partner', 'Borrower', required=True)
