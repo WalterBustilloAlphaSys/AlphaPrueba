@@ -14,6 +14,11 @@
                 <group expand="0" string="Group By">
                     <filter string="Country" name="country" context="{'group_by':'country_id'}"/>
                 </group>
+                <searchpanel>
+                    <field name="user_id" icon="fa fa-users"/>
+                    <field name="category_id" select="multi" icon="fa fa-list"/>
+                    <field name="type" icon="fa fa-list"/>
+                </searchpanel>
             </search>
         </field>
     </record>
