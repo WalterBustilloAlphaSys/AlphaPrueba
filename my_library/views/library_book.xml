@@ -16,7 +16,7 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
-                <header>
+                <header groups="my_library.group_library_user">
                     <button name="report_missing_book" string="Report Missing Book" type="object"/>
                 </header>
                 <group>
