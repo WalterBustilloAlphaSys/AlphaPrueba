@@ -11,12 +11,13 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Library',
     'version': '14.0.1',
-    'depends': ['base'],
+    'depends': ['base_setup'],
 
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
         'security/security_rules.xml',
+        'views/res_config_settings.xml',
         'views/library_book.xml'
     ],
 
