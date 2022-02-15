@@ -16,10 +16,14 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="report_missing_book" string="Report Missing Book" type="object"/>
+                </header>
                 <group>
                     <group>
                         <field name="name"/>
                         <field name="author_ids" widget="many2many_tags"/>
+                        <field name="report_missing"/>
                     </group>
                     <group>
                         <field name="date_release"/>
