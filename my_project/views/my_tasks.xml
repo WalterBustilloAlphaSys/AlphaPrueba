@@ -24,28 +24,23 @@
         </field>
     </record>
 
-    <record id="view_project_tasks_activity" model="ir.ui.view">
-        <field name="name">project task activity</field>
+    <record id="view_project_tasks_map" model="ir.ui.view">
+        <field name="name">project task map</field>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
-            <activity string="Tasks">
-                <templates>
-                    <div t-name="activity-box">
-                        <div>
-                            <field name="name" display="full"/>
-                            <field name="project_id" muted="1" display="full"/>
-                        </div>
-                    </div>
-                </templates>
-            </activity>
+            <map res_partner="partner_id">
+                <marker-popup>
+                    <field name="name" string="Title "/>
+                    <field name="partner_id" string="Customer "/>
+                </marker-popup>
+            </map>
         </field>
     </record>
 
     <record id='action_my_tasks' model='ir.actions.act_window'>
         <field name="name">My tasks</field>
         <field name="res_model">project.task</field>
-        <field name="view_mode">tree,activity,form</field>
-            <field name="context"> {'activity_view_ref': 'my_project.view_project_tasks_activity'} </field>
+        <field name="view_mode">tree,map,form</field>
     </record>
 
     <menuitem id="menu_custom_top_level" name="My Tasks" web_icon="my_project,static/description/icon.png"/>
