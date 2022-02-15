@@ -24,36 +24,28 @@
         </field>
     </record>
 
-    <record id="view_project_tasks_gantt" model="ir.ui.view">
-        <field name="name">project task gantt</field>
+    <record id="view_project_tasks_activity" model="ir.ui.view">
+        <field name="name">project task activity</field>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
-            <gantt date_start="date_assign" date_stop="date_end" string="Tasks" default_group_by="project_id" color="project_id">
-                <field name="name"/>
-                <field name="stage_id"/>
+            <activity string="Tasks">
                 <templates>
-                    <div t-name="gantt-popover" >
-                        <ul class="pl-1 mb-0 list-unstyled">
-                            <li>
-                                <strong>Name: </strong>
-                                <t t-esc="name"/>
-                            </li>
-                            <li>
-                                <strong>Stage: </strong>
-                                <t t-esc="stage_id[1]"/>
-                            </li>
-                        </ul>
+                    <div t-name="activity-box">
+                        <div>
+                            <field name="name" display="full"/>
+                            <field name="project_id" muted="1" display="full"/>
+                        </div>
                     </div>
                 </templates>
-            </gantt>
+            </activity>
         </field>
     </record>
 
     <record id='action_my_tasks' model='ir.actions.act_window'>
         <field name="name">My tasks</field>
         <field name="res_model">project.task</field>
-        <field name="view_mode">tree,gantt,form</field>
-            <field name="context"> {'gantt_view_ref': 'my_project.view_project_tasks_gantt'} </field>
+        <field name="view_mode">tree,activity,form</field>
+            <field name="context"> {'activity_view_ref': 'my_project.view_project_tasks_activity'} </field>
     </record>
 
     <menuitem id="menu_custom_top_level" name="My Tasks" web_icon="my_project,static/description/icon.png"/>
