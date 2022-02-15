@@ -16,6 +16,7 @@ Description related to library.
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
+        'security/security_rules.xml',
         'views/library_book.xml'
     ],
 
