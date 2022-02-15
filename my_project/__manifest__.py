@@ -6,7 +6,7 @@
     'website': "http://www.example.com",
     'category': 'Project',
     'version': '14.0.1',
-    'depends': ['project', 'web_dashboard'],
+    'depends': ['project', 'web_gantt'],
     'data': [
         'views/my_tasks.xml',
     ],

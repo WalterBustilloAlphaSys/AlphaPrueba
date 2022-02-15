@@ -24,27 +24,36 @@
         </field>
     </record>
 
-    <record id="view_project_tasks_dashboard" model="ir.ui.view">
-        <field name="name">project task dashbaord</field>
+    <record id="view_project_tasks_gantt" model="ir.ui.view">
+        <field name="name">project task gantt</field>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
-            <dashboard>
-                <view ref="my_project.view_project_tasks_graph" type="graph" />
-                <group>
-                    <aggregate name="all_task" string="Total Tasks" group_operator="count" field="id" measure="__count__"/>
-                    <aggregate name="progress_task" string="In Progress Tasks" domain="[('stage_id.name', 'ilike', 'In Progress')]" group_operator="count" field="id" measure="__count__"/>
-                    <aggregate name="done_task" string="Completed Tasks" domain="[('stage_id.name', 'ilike', 'Done')]" group_operator="count" field="id" measure="__count__"/>
-                    <formula name="price_average" string="Overall Progress" value="record.done_task / record.all_task" widget="percentage"/>
-                </group>
-                <view ref="my_project.view_project_tasks_pivot" type="pivot"/>
-            </dashboard>
+            <gantt date_start="date_assign" date_stop="date_end" string="Tasks" default_group_by="project_id" color="project_id">
+                <field name="name"/>
+                <field name="stage_id"/>
+                <templates>
+                    <div t-name="gantt-popover" >
+                        <ul class="pl-1 mb-0 list-unstyled">
+                            <li>
+                                <strong>Name: </strong>
+                                <t t-esc="name"/>
+                            </li>
+                            <li>
+                                <strong>Stage: </strong>
+                                <t t-esc="stage_id[1]"/>
+                            </li>
+                        </ul>
+                    </div>
+                </templates>
+            </gantt>
         </field>
     </record>
 
     <record id='action_my_tasks' model='ir.actions.act_window'>
         <field name="name">My tasks</field>
         <field name="res_model">project.task</field>
-        <field name="view_mode">tree,dashboard,form</field>
+        <field name="view_mode">tree,gantt,form</field>
+            <field name="context"> {'gantt_view_ref': 'my_project.view_project_tasks_gantt'} </field>
     </record>
 
     <menuitem id="menu_custom_top_level" name="My Tasks" web_icon="my_project,static/description/icon.png"/>
