@@ -11,7 +11,7 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Library',
     'version': '14.0.1',
-    'depends': ['base'],
+    'depends': ['base', 'contacts'],
 
     'data': [
         'security/groups.xml',
@@ -19,7 +19,9 @@ Description related to library.
         'views/library_book.xml',
         'views/library_book_categ.xml',
         'views/library_book_rent.xml',
-        'data/library_stage.xml'
+        'data/library_stage.xml',
+        'reports/book_rent_templates.xml',
+        'reports/book_rent_report.xml'
 
     ],
 
