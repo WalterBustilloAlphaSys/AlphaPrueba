@@ -7,20 +7,27 @@ class LibraryBook(models.Model):
     _description = 'Library Book'
 
     name = fields.Char('Title', required=True)
-    date_release = fields.Date('Release Date',
-        groups='my_library.group_release_dates')
+    date_release = fields.Date('Release Date')
+    active = fields.Boolean(default=True)
     author_ids = fields.Many2many('res.partner', string='Authors')
-    is_public = fields.Boolean(groups='my_library.group_library_librarian')
-    private_notes = fields.Text(groups='my_library.group_library_librarian')
-    report_missing = fields.Text(
-        string="Book is missing",
-        groups='my_library.group_library_librarian')
+    state = fields.Selection(
+        [('available', 'Available'),
+         ('borrowed', 'Borrowed'),
+         ('lost', 'Lost')],
+        'State', default="available")
+    cost_price = fields.Float('Book Cost')
+    category_id = fields.Many2one('library.book.category')
 
-    def report_missing_book(self):
+    def make_available(self):
         self.ensure_one()
-        message = "Book is missing (Reported by: %s)" % self.env.user.name
-        self.sudo().write({
-            'report_missing': message
-        })
+        self.state = 'available'
+
+    def make_borrowed(self):
+        self.ensure_one()
+        self.state = 'borrowed'
+
+    def make_lost(self):
+        self.ensure_one()
+        self.state = 'lost'
 
 

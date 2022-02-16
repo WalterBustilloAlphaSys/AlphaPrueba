@@ -11,16 +11,14 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Library',
     'version': '14.0.1',
-    'depends': ['base_setup'],
+    'depends': ['base'],
 
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
-        'security/security_rules.xml',
-        'views/res_config_settings.xml',
         'views/library_book.xml',
         'views/library_book_categ.xml',
-
+        'views/library_book_rent.xml',
     ],
 
     # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
@@ -28,6 +26,7 @@ Description related to library.
     #     'demo.xml'
     # ],
 }
+
 
 
 
