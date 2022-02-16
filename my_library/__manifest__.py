@@ -19,6 +19,8 @@ Description related to library.
         'views/library_book.xml',
         'views/library_book_categ.xml',
         'views/library_book_rent.xml',
+        'data/library_stage.xml'
+
     ],
 
     # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
