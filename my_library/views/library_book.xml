@@ -7,12 +7,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id='library_book_rent_action' model='ir.actions.act_window'>
-        <field name="name">Book on rent</field>
-        <field name="res_model">library.book.rent</field>
-        <field name="view_mode">kanban,tree,form</field>
-    </record>
-
     <menuitem name="My Library" id="library_base_menu" />
     <menuitem name="Books" id="library_book_menu" parent="library_base_menu" action="library_book_action"/>
 
@@ -22,31 +16,16 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-                    <button name="make_available" string="Make Available" type="object" />
-                    <button name="make_borrowed" string="Make Borrowed" type="object" />
-                    <button name="make_lost" string="Make Lost" type="object" />
-                    <field name="state" widget="statusbar"/>
-                </header>
-                <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="%(library_book_rent_action)d" type="action" icon="fa-book" context="{'search_default_book_id': active_id}">
-                            <field string="Rent Orders" name="rent_count" widget="statinfo"/>
-                        </button>
-                    </div>
+                <group>
                     <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="category_id"/>
-                            <field name="cost_price"/>
-                        </group>
-                        <group>
-                            <field name="date_release"/>
-                            <field name="active" invisible="1"/>
-                            <field name="author_ids" widget="many2many_tags"/>
-                        </group>
+                        <field name="name"/>
+                        <field name="author_ids" widget="many2many_tags"/>
                     </group>
-                </sheet>
+                    <group>
+                        <field name="short_name"/>
+                        <field name="date_release"/>
+                    </group>
+                </group>
             </form>
         </field>
     </record>
