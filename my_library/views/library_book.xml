@@ -7,6 +7,12 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id='library_book_rent_action' model='ir.actions.act_window'>
+        <field name="name">Book on rent</field>
+        <field name="res_model">library.book.rent</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
     <menuitem name="My Library" id="library_base_menu" />
     <menuitem name="Books" id="library_book_menu" parent="library_base_menu" action="library_book_action"/>
 
@@ -36,7 +42,7 @@
                         </group>
                         <group>
                             <field name="date_release"/>
-                            <field name="active"/>
+                            <field name="active" invisible="1"/>
                             <field name="author_ids" widget="many2many_tags"/>
                         </group>
                     </group>
