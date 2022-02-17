@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class LibraryBookRent(models.Model):
     _name = 'library.book.rent'
-    _description = 'Library Book Rent'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     @api.model
     def _default_rent_stage(self):
@@ -49,7 +49,6 @@ class LibraryBookRent(models.Model):
 class LibraryRentStage(models.Model):
     _name = 'library.rent.stage'
     _order = 'sequence,name'
-    _description = 'Library Rent Stage'
 
     name = fields.Char()
     sequence = fields.Integer()
@@ -62,7 +61,6 @@ class LibraryRentStage(models.Model):
 
 class LibraryRentTags(models.Model):
     _name = 'library.rent.tag'
-    _description = 'Library Rent Tag'
 
     name = fields.Char()
     color = fields.Integer()

@@ -11,7 +11,7 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Library',
     'version': '14.0.1',
-    'depends': ['base', 'contacts'],
+    'depends': ['base', 'mail'],
 
     'data': [
         'security/groups.xml',
@@ -22,7 +22,6 @@ Description related to library.
         'data/library_stage.xml',
         'reports/book_rent_templates.xml',
         'reports/book_rent_report.xml'
-
     ],
 
     # This demo data files will be loaded if db initialize with demo data (commented because file is not added in this example)
