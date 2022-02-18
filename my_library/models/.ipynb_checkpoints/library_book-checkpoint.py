@@ -8,26 +8,17 @@ class LibraryBook(models.Model):
 
     name = fields.Char('Title', required=True)
     date_release = fields.Date('Release Date')
-    active = fields.Boolean(default=True)
     author_ids = fields.Many2many('res.partner', string='Authors')
-    state = fields.Selection(
-        [('available', 'Available'),
-         ('borrowed', 'Borrowed'),
-         ('lost', 'Lost')],
-        'State', default="available")
-    cost_price = fields.Float('Book Cost')
-    category_id = fields.Many2one('library.book.category')
+    image = fields.Binary(attachment=True)
+    html_description = fields.Html()
+    book_issue_ids = fields.One2many('book.issue', 'book_id')
 
-    def make_available(self):
-        self.ensure_one()
-        self.state = 'available'
 
-    def make_borrowed(self):
-        self.ensure_one()
-        self.state = 'borrowed'
+class LibraryBookIssues(models.Model):
+    _name = 'book.issue'
+    _description = 'Book Issue'
 
-    def make_lost(self):
-        self.ensure_one()
-        self.state = 'lost'
-
+    book_id = fields.Many2one('library.book', required=True)
+    submitted_by = fields.Many2one('res.users')
+    issue_description = fields.Text()
 
