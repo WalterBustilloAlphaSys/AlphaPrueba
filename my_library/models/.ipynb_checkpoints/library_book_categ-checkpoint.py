@@ -16,7 +16,7 @@ class BookCategory(models.Model):
         'library.book.category',
         string='Parent Category',
         ondelete='restrict',
-        index=True,
+        index=True
     )
     child_ids = fields.One2many(
         'library.book.category', 'parent_id',
