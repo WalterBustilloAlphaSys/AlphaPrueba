@@ -24,6 +24,7 @@
                     <group>
                         <field name="short_name"/>
                         <field name="date_release"/>
+                        <field name="color" widget="int_color"/>
                     </group>
                 </group>
             </form>
