@@ -19,6 +19,11 @@ Description related to library.
         'views/library_book.xml',
         'views/templates.xml'
     ],
+
+    "qweb": [ 
+        'static/src/xml/qweb_template.xml',
+    ],
+
     # This demo data files will be loaded if db initialize with demo data (commented becaues file is not added in this example)
     # 'demo': [
     #     'demo.xml'
