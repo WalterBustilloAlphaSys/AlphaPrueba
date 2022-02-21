@@ -12,7 +12,6 @@ class LibraryBook(models.Model):
     short_name = fields.Char('Short Title')
     date_release = fields.Date('Release Date')
     author_ids = fields.Many2many('res.partner', string='Authors')
-    color = fields.Integer()
 
     def name_get(self):
         """ This method used to customize display name of the record """
