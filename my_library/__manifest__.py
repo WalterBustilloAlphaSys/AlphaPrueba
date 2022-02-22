@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "My Library",  # Module title
+        'name': "My Library",  # Module title
     'summary': "Manage books easily",  # Module subtitle phrase
     'description': """
 Manage Library
